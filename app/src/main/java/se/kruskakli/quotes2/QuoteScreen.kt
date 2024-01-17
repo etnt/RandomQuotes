@@ -18,8 +18,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -45,7 +48,13 @@ fun QuoteScreen(
                 .fillMaxWidth()
                 .padding(32.dp),
             textAlign = TextAlign.Center,
-            fontSize = 28.sp,
+            style = TextStyle(
+                fontSize = 30.sp,
+                fontStyle = FontStyle.Italic,
+                lineHeight = 40.sp
+                //fontFamily = FontFamily(Font(R.font.tangerine_regular
+            ),
+
             color = Color.White
         )
         Box(modifier = modifier
@@ -60,7 +69,7 @@ fun QuoteScreen(
                 textAlign = TextAlign.Right,
                 style = TextStyle(
                     fontSize = 14.sp,
-                    fontStyle = FontStyle.Italic,
+                    fontStyle = FontStyle.Italic
                 ),
                 color = Color.Red
             )
