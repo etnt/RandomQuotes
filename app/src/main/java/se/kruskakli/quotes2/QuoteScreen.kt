@@ -12,6 +12,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -24,7 +26,12 @@ import androidx.compose.ui.unit.sp
 import se.kruskakli.quotes2.ui.theme.Quotes2Theme
 
 @Composable
-fun QuoteScreen(modifier: Modifier = Modifier) {
+fun QuoteScreen(
+    quote: MutableState<String>,
+    author: MutableState<String>,
+    onAction: () -> Unit = {},
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier
             .background(Color.Black)
@@ -33,7 +40,7 @@ fun QuoteScreen(modifier: Modifier = Modifier) {
         verticalArrangement = Arrangement.Center
     ){
         Text(
-            text = "Tomma tunnor skramlar mest.",
+            text = quote.value,
             modifier = modifier
                 .fillMaxWidth()
                 .padding(32.dp),
@@ -46,7 +53,7 @@ fun QuoteScreen(modifier: Modifier = Modifier) {
             .padding(16.dp)
         ){
             Text(
-                text = "Anononym.",
+                text = author.value,
                 modifier = modifier
                     .fillMaxWidth()
                     .padding(end = 8.dp),
@@ -65,12 +72,12 @@ fun QuoteScreen(modifier: Modifier = Modifier) {
                 containerColor = Color.Black,
                 contentColor = Color.Green
             ),
-            onClick = { /*TODO*/ }
+            onClick = { onAction() }
         ) {
             Text(
                 text = "Get New Quote",
                 modifier = modifier
-                    .padding(16.dp),
+                    .padding(top = 32.dp),
                 fontSize = 20.sp
             )
         }
@@ -82,6 +89,9 @@ fun QuoteScreen(modifier: Modifier = Modifier) {
 @Composable
 fun QuoteScreenPreview() {
     Quotes2Theme {
-        QuoteScreen()
+        val quote = mutableStateOf("Tomma tunnor skramlar mest.")
+        val author = mutableStateOf("Anononym.")
+
+        QuoteScreen(quote, author)
     }
 }
