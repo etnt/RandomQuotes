@@ -1,7 +1,9 @@
 package se.kruskakli.quotes2
 
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,7 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -37,6 +41,23 @@ fun QuoteScreen(modifier: Modifier = Modifier) {
             fontSize = 28.sp,
             color = Color.White
         )
+        Box(modifier = modifier
+            .fillMaxWidth()
+            .padding(16.dp)
+        ){
+            Text(
+                text = "Anononym.",
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(end = 8.dp),
+                textAlign = TextAlign.Right,
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    fontStyle = FontStyle.Italic,
+                ),
+                color = Color.Red
+            )
+        }
         Button(
             modifier = modifier
                 .background(Color.Black),
