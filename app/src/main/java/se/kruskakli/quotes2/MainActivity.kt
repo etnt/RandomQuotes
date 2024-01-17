@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
                                 if (response.isSuccessful) {
                                     withContext(Dispatchers.Main) {
                                         response.body()?.let {
-                                            Log.d(TAG, "onCreate: ${it[0].q}")
+                                            //Log.d(TAG, "onCreate: ${it[0].q}")
                                             quote.value = it[0].q
                                             author.value = it[0].a
                                         }
